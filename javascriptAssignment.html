@@ -1,0 +1,41 @@
+/*1. Create input boxes which will take First Name, Last Name, Delay time and one button 
+2. once click on the button the Name should visible on screen after Delay time*/
+
+
+
+<html>
+<head>
+	<title>assignment</title>
+	<link rel = "stylesheet" href = "javascriptAssignment.css"/>
+</head>
+<body>
+	<div>
+		<h1>First name</h1>
+		<input type = "text" placeholder = "First name" id = "name"></input>
+		<h1>last name</h1>
+		<input type = "text" placeholder = "last name" id = "last"></input>
+		<h1>delay time</h1>
+		<input type = "number" placeholder = "delay time" id = "time"></input>
+		<div id = "main"></div>
+		<br>
+		<button id = "btn">click</button>
+		
+	</div>
+<body>
+<script>
+	let button = document.querySelector("#btn");
+	button.onclick= function()
+	{
+		let name = document.querySelector("#name").value;
+		let last = document.querySelector("#last").value;
+		let time = document.querySelector("#time").value;
+		
+		let main = document.querySelector("#main")
+		let div = document.createElement("div");
+		div.innerText = name;
+		main.append(div);
+	}
+</script>
+</html>
+
+
