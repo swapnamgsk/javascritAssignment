@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>fetch</title>
+	<link rel = "stylesheet" href = "fetchAssignment.css" />
+</head>
+<body>
+	<div id = "cont">
+		<h1>Movies</h1>
+		<input type = "text" placeholder = "name" id = "name"></input>
+		<button onclick = "search()" id = "btn">click</button>
+		<div id = "main"></div>
+	</div>
+</body>
+<script>
+	let main = document.querySelector("#main");
+	async function fetchData(url)
+	{
+		const response = await fetch(url);
+		const jsonData = await response.json();
+		return jsonData;
+	}
+	
+	
+	async function search()
+	{
+		let input = document.querySelector("#name").value;
+		let response = await fetchData(`http://www.omdbapi.com/?apikey=6663c708&s=${input}`)
+		
+		console.log(response);
+		let result = response["Search"];
+		for(let i = 0;i<result.length;i++)
+		{
+			let div = document.createElement("div");
+			div.setAttribute("id","div");
+			div.innerText = result[i].Title;
+			
+			let store = document.createElement("div");
+			store.setAttribute("id","store");
+			store.append(div);
+			
+			main.append(store);
+			main.style.backgroundColor="aqua";
+			main.style.border="1px solid black";
+			main.style.borderRadius="10px";
+			main.style.marginTop="10px";
+			
+			
+		}
+	}	
+	
+	
+</script>	
+</html>
+
